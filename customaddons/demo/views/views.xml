@@ -1,0 +1,58 @@
+<odoo>
+  <data>
+
+	  <record id="Fruit_tree_view" model="ir.ui.view">
+		  <field name="name">Fruit.tree.view</field>
+		  <field name="model">demo.demo</field>
+		  <field name="arch" type="xml">
+			  <tree>
+				  <field name="Fruit_name"/>
+				  <field name="value" />
+				  <field name="description" />
+			  </tree>
+		  </field>
+	  </record>
+	  
+	  <record id="Fruit_form_view" model="ir.ui.view">
+		  <field name="name">Fruit.form.view</field>
+		  <field name="model">demo.demo</field> 
+		  <field name="arch" type="xml">
+			  <form>
+				  <sheet>
+					  <group>
+						  <field name="Fruit_name"/>
+						  <field name="value"/>
+						  <field name="description"/>
+					  </group>
+				  </sheet>
+			  </form>
+		  </field>
+		  
+	  </record>
+
+	  <record id="Fruit_action" model="ir.actions.act_window">
+		  <field name="name">demo</field>
+		  <field name="res_model">demo.demo</field>
+		  <field name="view_mode">tree,form</field>
+	  </record>
+
+	  <menuitem
+		  id="Fruit_root_menu"
+		  name="demo"
+	  />
+	  
+	  <menuitem
+		  id="Fruit_sub_menu"
+		  name="fruit"
+		  parent="Fruit_root_menu"
+	  />
+	  
+	  <menuitem
+		  id="Fruit_menu"
+		  name="fruit_list"
+		  parent="Fruit_sub_menu"
+		  action="Fruit_action"
+	  />
+	  
+  </data>
+</odoo>
