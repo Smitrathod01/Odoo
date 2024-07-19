@@ -35,6 +35,10 @@ class HrEmployee(models.Model):
     payslip_count = fields.Integer(compute='_compute_payslip_count',
                                    string='Payslip Count',
                                    help="Set Payslip Count")
+    
+    paid_payslip_count = fields.Integer(compute='_compute_paid_payslip_count',
+                                   string='Paid Payslip Count',
+                                   help="Set paid Payslip Count")
 
     def _compute_payslip_count(self):
         """Function for count Payslips"""
@@ -46,3 +50,14 @@ class HrEmployee(models.Model):
             payslip_data)
         for employee in self:
             employee.payslip_count = result.get(employee.id, 0)
+
+    def _compute_paid_payslip_count(self):
+        """Function for count paid Payslips"""
+        payslip_data = self.env['hr.payslip'].sudo().read_group(
+            [('employee_id', 'in', self.ids), ('state', '=', 'paid')],
+            ['employee_id'], ['employee_id'])
+        result = dict(
+            (data['employee_id'][0], data['employee_id_count']) for data in
+            payslip_data)
+        for employee in self:
+            employee.paid_payslip_count = result.get(employee.id, 0)

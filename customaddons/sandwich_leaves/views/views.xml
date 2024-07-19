@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="sandwich_leaves.list">
+      <field name="name">sandwich_leaves list</field>
+      <field name="model">sandwich_leaves.sandwich_leaves</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="sandwich_leaves.action_window">
+      <field name="name">sandwich_leaves window</field>
+      <field name="res_model">sandwich_leaves.sandwich_leaves</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="sandwich_leaves.action_server">
+      <field name="name">sandwich_leaves server</field>
+      <field name="model_id" ref="model_sandwich_leaves_sandwich_leaves"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="sandwich_leaves" id="sandwich_leaves.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="sandwich_leaves.menu_1" parent="sandwich_leaves.menu_root"/>
+    <menuitem name="Menu 2" id="sandwich_leaves.menu_2" parent="sandwich_leaves.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="sandwich_leaves.menu_1_list" parent="sandwich_leaves.menu_1"
+              action="sandwich_leaves.action_window"/>
+    <menuitem name="Server to list" id="sandwich_leaves" parent="sandwich_leaves.menu_2"
+              action="sandwich_leaves.action_server"/>
+-->
+  </data>
+</odoo>

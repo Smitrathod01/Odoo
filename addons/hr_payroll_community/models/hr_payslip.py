@@ -69,6 +69,7 @@ class HrPayslip(models.Model):
         ('verify', 'Waiting'),
         ('done', 'Done'),
         ('cancel', 'Rejected'),
+        ('paid','Paid'),
     ], string='Status', index=True, readonly=True, copy=False, default='draft',
         help="""* When the payslip is created the status is \'Draft\'
                 \n* If the payslip is under verification, 
@@ -111,6 +112,11 @@ class HrPayslip(models.Model):
     payslip_count = fields.Integer(compute='_compute_payslip_count',
                                    string="Payslip Computation Details",
                                    help="Set Payslip Count")
+    # paid_payslip_count = fields.Integer(compute='_compute_paid_payslip_count',
+    #                                string="Paid Payslip Computation Details",
+    #                                help="Set Paid Payslip Count")
+    
+    
 
     def _compute_details_by_salary_rule_category_ids(self):
         """Compute function for Salary Rule Category for getting
@@ -123,6 +129,12 @@ class HrPayslip(models.Model):
         """Compute function for getting Total count of Payslips"""
         for payslip in self:
             payslip.payslip_count = len(payslip.line_ids)
+
+    # def _compute_paid_payslip_count(self):
+    #     """Compute function for getting Total count of Payslips"""
+    #     for payslip in self:
+    #         if payslip.state == "paid":
+    #             payslip.paid_payslip_count = len(payslip.line_ids)
 
     @api.constrains('date_from', 'date_to')
     def _check_dates(self):
@@ -425,7 +437,7 @@ class HrPayslip(models.Model):
                 if to_date is None:
                     to_date = fields.Date.today()
                 self.env.cr.execute("""SELECT sum(case when hp.credit_note = 
-                False then (pl.total) else (-pl.total) end)
+                False then (pl.total) else (-pl.total`) end)
                 FROM hr_payslip as hp, hr_payslip_line as pl
                 WHERE hp.employee_id = %s AND hp.state = 'done'
                 AND hp.date_from >= %s AND hp.date_to <= %s AND hp.id 

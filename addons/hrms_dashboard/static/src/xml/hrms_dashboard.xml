@@ -124,7 +124,7 @@
                             <div class="stat-content">
                                 <div class="stat-text">Payslips
                                 </div>
-                                <div class="stat-digit"><t t-esc="this.state.login_employee['payslip_count']"/>
+                                <div class="stat-digit"><t t-esc="this.state.login_employee['paid_payslip_count']"/>
                                 </div>
                             </div>
                         </div>
