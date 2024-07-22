@@ -17,10 +17,10 @@
                                     <span t-field="o.employee_id"/>
                                 </td>
                                 <td>
-                                    <strong>Designation</strong>
+                                    <strong>Employee ID</strong>
                                 </td>
                                 <td>
-                                    <span t-field="o.employee_id.job_id"/>
+                                    <span t-field="o.employee_id.identification_id"/>
                                 </td>
                             </tr>
                             <tr>
@@ -31,11 +31,12 @@
                                     <span t-field="o.employee_id.work_email"/>
                                 </td>
                                 <td>
-                                    <strong>Identification No</strong>
+                                    <strong>Designation</strong>
                                 </td>
                                 <td>
-                                    <span t-field="o.employee_id.identification_id"/>
+                                    <span t-field="o.employee_id.job_id"/>
                                 </td>
+                                
                             </tr>
                             <tr>
                                 <td>
@@ -46,6 +47,20 @@
                                 </td>
                                 <td>
                                     <strong>Bank Account</strong>
+                                </td>
+                                <td>
+                                    <span t-field="o.employee_id.bank_account_id"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Pan No</strong>
+                                </td>
+                                <td>
+                                    <span t-field="o.number"/>
+                                </td>
+                                <td>
+                                    <strong>PF ID</strong>
                                 </td>
                                 <td>
                                     <span t-field="o.employee_id.bank_account_id"/>
@@ -71,8 +86,8 @@
                                 <tr>
                                     <th>Code</th>
                                     <th>Name</th>
-                                    <th>Quantity/rate</th>
-                                    <th>Amount</th>
+                                    <!-- <th>Quantity/rate</th>
+                                    <th>Amount</th> -->
                                     <th>Total</th>
                                 </tr>
                             </thead>
@@ -85,13 +100,13 @@
                                     <td>
                                         <span t-field="line.name"/>
                                     </td>
-                                    <td>
+                                    <!-- <td>
                                         <span t-field="line.quantity"/>
                                     </td>
                                     <td>
                                         <span t-esc="line.amount"
                                               t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
-                                    </td>
+                                    </td> -->
                                     <td>
                                         <span t-esc="line.total"
                                               t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
@@ -99,8 +114,8 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <p class="text-right">
-                            <strong>Authorized signature</strong>
+                        <p class="text-center">
+                            <strong>This document is computer generated and does not require the Registrar’s signature or the Company’s stamp in order to be considered valid.</strong>
                         </p>
                     </div>
                 </t>

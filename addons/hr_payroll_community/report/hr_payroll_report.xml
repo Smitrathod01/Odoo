@@ -16,7 +16,9 @@
         <field name="binding_model_id" ref="model_hr_payslip"/>
         <field name="report_name">hr_payroll_community.report_payslip</field>
         <field name="report_file">hr_payroll_community.report_payslip</field>
-        <field name="print_report_name">('Payslip Report - %s' % (object.employee_id.name))</field>
+        <!-- <field name="print_report_name">('Payslip Report - %s' % (object.employee_id.name))</field> -->
+        <field name="print_report_name">('Payslip - %s - %s - Learniphi Technologies' % (object.employee_id.name, object.date_from.strftime('%B %Y')))</field>
+
     </record>
     <!--Report action for Payslip Details Report-->
     <record id="hr_payslip_report_action" model="ir.actions.report">
